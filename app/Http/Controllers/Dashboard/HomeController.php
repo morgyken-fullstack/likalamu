@@ -36,16 +36,15 @@ class HomeController extends Controller
 
         $data = DB::table('tasks')->paginate(20);
 
-       // dd ($data);
 
-       return view('client.index', ['tasks' => $data]);
+      return view('client.index', ['tasks' => $data]);
     }
 
     public function testing ()
     {
-         $data = DB::table('tasks')->paginate(20);
+         //$data = DB::table('tasks')->paginate(20);
 
-        return view('client.tasks', ['tasks' => $data]);
+        return view('client.date-test');
 
     }
 }

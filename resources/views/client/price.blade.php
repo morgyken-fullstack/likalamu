@@ -2,20 +2,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-    <!-- Main Quill library -->
-
-    <!-- include summernote css/js -->
-    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
-
-</head>
 
 <style media="screen">
 .modal-dialog.modal-post {
@@ -114,7 +100,7 @@ input[readonly] {
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="usr">pages:</label>
-                                        <input type="number" name="pages" id="pages" class="form-control">
+                                        <input type="number" name="pages" min="2" id="pages" class="form-control">
                                     </div>
                                 </div>
                             </div>
@@ -134,13 +120,16 @@ input[readonly] {
                                         <option value="Other">Other</option>
                                     </select>
                                 </div>
-                                <div class="form-group col-md-6">
+                                <div class="col-sm-6">
                                     <label for="usr">deadline:</label>
-                                    <div id="deadline">
-                                        <input type="date" name="deadline" id="deadline">
-                                    </div>
-
+                                    <input type="text" class="form-control" id="datetimepicker1">
                                 </div>
+                                <script type="text/javascript">
+                                $(function() {
+                                    $('#datetimepicker1').datetimepicker();
+                                });
+                                </script>
+
                             </div>
                             <div class="form-group col-md-12">
                                 <hr>
@@ -184,58 +173,8 @@ input[readonly] {
         </div>
 
     </div>
-    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/codemirror/3.20.0/codemirror.js"></script>
-    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/codemirror/3.20.0/mode/xml/xml.js"></script>
-    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/codemirror/2.36.0/formatting.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.1.min.js"
-        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
-
-
 
     <script type="text/javascript">
-    $('#summernote').summernote({
-        placeholder: 'Type your Question Content Here',
-        tabsize: 2,
-        height: 370,
-        toolbar: [
-            ['style', ['style']],
-            ['font', ['bold', 'underline', 'clear']],
-            ['color', ['color']],
-            ['para', ['ul', 'ol', 'paragraph']],
-            ['view', ['fullscreen', 'codeview', 'help']]
-        ]
-    });
-
-    // $('#myModal').modal('hide')
-
-    $(document).on('change', '.btn-file :file', function() {
-        var input = $(this),
-            numFiles = input.get(0).files ? input.get(0).files.length : 1,
-            label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
-        input.trigger('fileselect', [numFiles, label]);
-    });
-
-    $(document).ready(function() {
-        $('.btn-file :file').on('fileselect', function(event, numFiles, label) {
-
-            var input = $(this).parents('.input-group').find(':text'),
-                log = numFiles > 1 ? numFiles + 'files selected' : label;
-
-            if (input.length) {
-                input.val(log);
-            } else {
-                if (log) alert(log);
-            }
-
-        });
-    });
-
-
-
-
-    // pages,
-
-    // Shorthand for $( document ).ready()
     $(function() {
         console.log("ready!");
 
@@ -300,5 +239,12 @@ input[readonly] {
 
     $(".pages").change(function() {
         $("price").value = price * 1.5
+    });
+    </script>
+    <script>
+    $(function() {
+
+        $('#example').datetimepicker();
+
     });
     </script>
